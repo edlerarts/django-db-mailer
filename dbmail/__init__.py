@@ -124,7 +124,8 @@ def initial_signals():
     from django.db.utils import DatabaseError, IntegrityError
 
     for cmd in ['schemamigration', 'migrate', 'syncdb',
-                'test', 'createsuperuser', 'makemigrations', 'collectstatic']:
+                'test', 'createsuperuser', 'makemigrations',
+                'collectstatic', 'compilemessages']:
         if cmd in sys.argv:
             break
     else:
