@@ -1,11 +1,10 @@
 # -*- encoding: utf-8 -*-
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 
-urlpatterns = patterns(
-    'dbmail.views',
+urlpatterns = [
     url(r'^api/', 'send_by_dbmail', name='db-mail-api'),
     url(r'^mail_read_tracker/(.*?)/$',
         'mail_read_tracker', name='db-mail-tracker'),
-)
+]

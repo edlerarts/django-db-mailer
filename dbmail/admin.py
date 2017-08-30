@@ -8,7 +8,7 @@ from django.core.exceptions import ImproperlyConfigured
 from django.utils.translation import ugettext_lazy as _
 from django.shortcuts import redirect, render
 from django.core.urlresolvers import reverse
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.contrib import messages
 from django.contrib import admin
 
@@ -137,8 +137,7 @@ class MailTemplateAdmin(ModelAdmin):
 
     def get_urls(self):
         urls = super(MailTemplateAdmin, self).get_urls()
-        admin_urls = patterns(
-            '',
+        admin_urls = [
             url(
                 r'^(\d+)/sendmail/$',
                 self.admin_site.admin_view(self.send_mail_view),
@@ -158,7 +157,7 @@ class MailTemplateAdmin(ModelAdmin):
                 self.admin_site.admin_view(self.clean_cache_view),
                 name='clean_cache_view'
             ),
-        )
+        ]
         return admin_urls + urls
 
     def get_readonly_fields(self, request, obj=None):
